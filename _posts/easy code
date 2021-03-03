@@ -1,0 +1,38 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+#include<ctype.h>
+int main()
+{
+	int a,b,N=0;
+	char r;
+	printf("请输入您猜的数:");
+	srand(time(NULL));
+	do {
+	    b=rand()%100+1;
+	    do {
+		    scanf("%d",&a);
+		    if(a>=1 && a<=100)
+			{
+			    if(a==b)
+				    printf("Right!\n");
+			    else if(a>b)
+				{
+				    N++;
+				    printf("Wrong! Too high!\n");
+				}
+			    else if(a<b)
+				{
+				    N++;
+				    printf("Wrong! Too low!\n");
+				}
+				else printf("数据错误\n");
+			}
+		}while((a!=b) && (N<10));
+		printf("N=%d\n",N);
+		printf("游戏结束,是否进行下一局Y(是)/O(否)\n");
+		scanf("%c",&r);
+	}while(toupper(getch())!='Y');
+	printf("Game over\n");
+	return 0;
+}
